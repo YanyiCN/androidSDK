@@ -125,7 +125,7 @@ public class AppActivity extends Cocos2dxActivity {
         app.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                try {
+                try {//s
                     JSONObject jsonObject = new JSONObject(text);
                     String str = jsonObject.getString("str");
                     ClipboardManager c= (ClipboardManager)app.getSystemService(Context.CLIPBOARD_SERVICE);

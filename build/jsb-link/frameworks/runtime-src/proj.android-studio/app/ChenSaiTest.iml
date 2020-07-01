@@ -254,8 +254,8 @@
     <content url="file://$MODULE_DIR$/../src">
       <sourceFolder url="file://$MODULE_DIR$/../src" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../../../../../../soft/android/android-ndk-r20/sources/android/cpufeatures">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../../../../../soft/android/android-ndk-r20/sources/android/cpufeatures" isTestSource="false" />
+    <content url="file://D:/work/soft/android/android-ndk-r20/sources/android/cpufeatures">
+      <sourceFolder url="file://D:/work/soft/android/android-ndk-r20/sources/android/cpufeatures" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 30 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
