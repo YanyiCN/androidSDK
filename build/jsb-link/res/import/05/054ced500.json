@@ -1,0 +1,162 @@
+[
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "us_progress_bg",
+      "texture": "8b2MI41G5G07dlP1qSaWor",
+      "rect": [
+        1,
+        1,
+        832,
+        93
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        832,
+        93
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "us_progress",
+      "texture": "8b2MI41G5G07dlP1qSaWor",
+      "rect": [
+        159,
+        38,
+        42,
+        26
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        42,
+        26
+      ],
+      "rotated": 1,
+      "capInsets": [
+        12,
+        8,
+        14,
+        9
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "us_tip_bg",
+      "texture": "8b2MI41G5G07dlP1qSaWor",
+      "rect": [
+        96,
+        1,
+        834,
+        61
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        834,
+        61
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "us_tip_lb",
+      "texture": "8b2MI41G5G07dlP1qSaWor",
+      "rect": [
+        159,
+        1,
+        37,
+        35
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        37,
+        35
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "us_loading",
+      "texture": "8b2MI41G5G07dlP1qSaWor",
+      "rect": [
+        1,
+        837,
+        174,
+        196
+      ],
+      "offset": [
+        2,
+        12
+      ],
+      "originalSize": [
+        220,
+        220
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteAtlas",
+    "_name": "update_scene.plist",
+    "_spriteFrames": {
+      "us_loading": {
+        "__uuid__": "begXeLHq1IFreGASjb4gbL"
+      },
+      "us_progress": {
+        "__uuid__": "4bYd7M2/VF1rmQAuHn0a5u"
+      },
+      "us_progress_bg": {
+        "__uuid__": "48hGOEn8hMEqib3p2aYqnx"
+      },
+      "us_tip_bg": {
+        "__uuid__": "6fvWzhpz9FpKDGTFFaYKBz"
+      },
+      "us_tip_lb": {
+        "__uuid__": "7aiD1dDSZK6J91AGRY02Qo"
+      }
+    }
+  }
+]

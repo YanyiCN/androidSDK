@@ -1,0 +1,9 @@
+{
+  "engine": "cocos2d-html5",
+  "packages": "packages",
+  "version": "2.3.4",
+  "name": "qp_game",
+  "uuid": "facb1201-136d-4b8f-9952-481974ff9f8f",
+  "id": "4ac24e8c-d82e-4154-aedf-3fde73383881",
+  "isNew": false
+}

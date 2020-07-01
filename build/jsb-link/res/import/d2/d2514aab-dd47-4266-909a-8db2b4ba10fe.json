@@ -1,0 +1,85 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "skin_head_102",
+  "_skeletonJson": {
+    "skeleton": {
+      "hash": "BtRsLynAtT4L8E5vdKuB3U4kA9I",
+      "spine": "3.6.53",
+      "width": 151,
+      "height": 136,
+      "images": "./images/"
+    },
+    "bones": [
+      {
+        "name": "root"
+      },
+      {
+        "name": "骨骼",
+        "parent": "root"
+      }
+    ],
+    "slots": [
+      {
+        "name": "1",
+        "bone": "骨骼",
+        "attachment": "1"
+      }
+    ],
+    "skins": {
+      "default": {
+        "1": {
+          "1": {
+            "x": -1.45,
+            "y": 7.69,
+            "width": 151,
+            "height": 136
+          }
+        }
+      }
+    },
+    "animations": {
+      "animation": {
+        "bones": {
+          "骨骼": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\r\nskin_head_102.png\r\nsize: 256,256\r\nformat: RGBA8888\r\nfilter: Linear,Linear\r\nrepeat: none\r\n1\r\n  rotate: false\r\n  xy: 2, 2\r\n  size: 151, 136\r\n  orig: 151, 136\r\n  offset: 0, 0\r\n  index: -1\r\n",
+  "textures": [
+    {
+      "__uuid__": "6aAUzPNbtFGazhGxdex4Wi"
+    }
+  ],
+  "textureNames": [
+    "skin_head_102.png"
+  ]
+}

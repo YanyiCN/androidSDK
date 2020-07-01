@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "update_scene",
+    "texture": "8b2MI41G5G07dlP1qSaWor",
+    "rect": [
+      0,
+      0,
+      198,
+      1010
+    ],
+    "offset": [
+      0,
+      1
+    ],
+    "originalSize": [
+      198,
+      1012
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

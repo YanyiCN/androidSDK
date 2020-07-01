@@ -1,0 +1,992 @@
+[
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "cm_toptitle_bg",
+      "texture": "89NVb2ynhLHKJzgZ9MgKt/",
+      "rect": [
+        0,
+        0,
+        242,
+        59
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        242,
+        59
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "cm_close",
+      "texture": "4f74Ie5mFDc4fxm4ievhHd",
+      "rect": [
+        0,
+        0,
+        32,
+        36
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        32,
+        36
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "__type__": "cc.SpriteFrame",
+    "content": {
+      "name": "cm_box_bg_title",
+      "texture": "09pElOzZ1LzpNUfPwbKRrk",
+      "rect": [
+        0,
+        0,
+        74,
+        134
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        74,
+        134
+      ],
+      "capInsets": [
+        25,
+        82,
+        25,
+        35
+      ]
+    }
+  },
+  [
+    {
+      "__type__": "cc.Prefab",
+      "_name": "LoginAgreementPop",
+      "data": {
+        "__id__": 1
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "LoginAgreementPop",
+      "_children": [
+        {
+          "__id__": 2
+        },
+        {
+          "__id__": 5
+        },
+        {
+          "__id__": 6
+        },
+        {
+          "__id__": 7
+        }
+      ],
+      "_components": [
+        {
+          "__type__": "3915cfTfvNG8apWYn2TdPQ2",
+          "node": {
+            "__id__": 1
+          }
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "95+gAb6qVMa5oUuA5a5z38"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 1366,
+        "height": 768
+      },
+      "_anchorPoint": {
+        "__type__": "cc.Vec2",
+        "x": 0.4983812765097033,
+        "y": 0.5
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "spBodybg",
+      "_parent": {
+        "__id__": 1
+      },
+      "_children": [
+        {
+          "__id__": 3
+        },
+        {
+          "__id__": 4
+        }
+      ],
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 2
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_spriteFrame": {
+            "__uuid__": "54/n3IEDVKBqwYm0MeXBmX"
+          },
+          "_type": 1,
+          "_sizeMode": 0
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "d599TEq1VOmpeudmR0zUmh"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 634,
+        "height": 558
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          0.2,
+          3.1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "spTitlebg",
+      "_parent": {
+        "__id__": 2
+      },
+      "_active": false,
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 3
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_spriteFrame": {
+            "__uuid__": "0aMhcV3KhERLpTfy43fQwc"
+          }
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "f73PtSRUBMz5xE8ULE4BKL"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 242,
+        "height": 59
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          0,
+          248.353,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "lbTitletxt",
+      "_parent": {
+        "__id__": 2
+      },
+      "_components": [
+        {
+          "__type__": "cc.Label",
+          "node": {
+            "__id__": 4
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_useOriginalSize": false,
+          "_string": "用户协议",
+          "_N$string": "用户协议",
+          "_fontSize": 30,
+          "_lineHeight": 30,
+          "_N$horizontalAlign": 1,
+          "_N$verticalAlign": 1
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "ccXxuAc4dJ6K9xYLvuizii"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 120,
+        "height": 37.8
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          0,
+          251.368,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "btnClose",
+      "_parent": {
+        "__id__": 1
+      },
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 5
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_spriteFrame": {
+            "__uuid__": "275gIM2qZFgqC88Uv7bzCk"
+          }
+        },
+        {
+          "__type__": "cc.Button",
+          "node": {
+            "__id__": 5
+          },
+          "_normalMaterial": {
+            "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+          },
+          "zoomScale": 0.97,
+          "clickEvents": [
+            {
+              "__type__": "cc.ClickEvent",
+              "target": {
+                "__id__": 1
+              },
+              "_componentId": "3915cfTfvNG8apWYn2TdPQ2",
+              "handler": "close"
+            }
+          ],
+          "_N$transition": 3,
+          "transition": 3
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "c5AEMZwD1IxrR7Tvpk8XJM"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 32,
+        "height": 36
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          287.009,
+          250.666,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "lbWelcome",
+      "_parent": {
+        "__id__": 1
+      },
+      "_components": [
+        {
+          "__type__": "cc.Label",
+          "node": {
+            "__id__": 6
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_useOriginalSize": false,
+          "_string": "欢迎使用来打斗地主游戏软件及服务！",
+          "_N$string": "欢迎使用来打斗地主游戏软件及服务！",
+          "_fontSize": 25,
+          "_lineHeight": 28,
+          "_N$file": {
+            "__uuid__": "bcogdoz1tLfbeyAkU44/DX"
+          },
+          "_isSystemFontUsed": false,
+          "_styleFlags": 1,
+          "_N$horizontalAlign": 1,
+          "_N$verticalAlign": 1
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "07kSv/UeFI4LFKlYf9phsO"
+      },
+      "_color": {
+        "__type__": "cc.Color",
+        "r": 162,
+        "g": 109,
+        "b": 69
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 425,
+        "height": 35.28
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          0,
+          179.817,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "svAgreement",
+      "_parent": {
+        "__id__": 1
+      },
+      "_children": [
+        {
+          "__id__": 8
+        }
+      ],
+      "_components": [
+        {
+          "__type__": "cc.Sprite",
+          "node": {
+            "__id__": 7
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_type": 1,
+          "_sizeMode": 0
+        },
+        {
+          "__type__": "cc.ScrollView",
+          "node": {
+            "__id__": 7
+          },
+          "horizontal": false,
+          "brake": 0.75,
+          "bounceDuration": 0.23,
+          "_N$content": {
+            "__id__": 9
+          },
+          "content": {
+            "__id__": 9
+          },
+          "_N$horizontalScrollBar": null,
+          "_N$verticalScrollBar": null
+        },
+        {
+          "__type__": "cc.Widget",
+          "node": {
+            "__id__": 7
+          },
+          "_alignFlags": 40,
+          "_left": 419.7888237122547,
+          "_right": 420.2111762877453,
+          "_originalWidth": 533
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "79cuRo5mhCnKHeBUOdOqr8"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 526,
+        "height": 380
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          2,
+          -45.234,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "view",
+      "_parent": {
+        "__id__": 7
+      },
+      "_children": [
+        {
+          "__id__": 9
+        }
+      ],
+      "_components": [
+        {
+          "__type__": "cc.Mask",
+          "node": {
+            "__id__": 8
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_N$alphaThreshold": 0
+        },
+        {
+          "__type__": "cc.Widget",
+          "node": {
+            "__id__": 8
+          },
+          "_alignFlags": 45,
+          "_originalWidth": 240,
+          "_originalHeight": 250
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "59dAR1YAZFtJT0HWCC9/dd"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 526,
+        "height": 380
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "content",
+      "_parent": {
+        "__id__": 8
+      },
+      "_children": [
+        {
+          "__id__": 10
+        },
+        {
+          "__id__": 11
+        },
+        {
+          "__id__": 12
+        },
+        {
+          "__id__": 13
+        }
+      ],
+      "_components": [
+        {
+          "__type__": "cc.Layout",
+          "node": {
+            "__id__": 9
+          },
+          "_layoutSize": {
+            "__type__": "cc.Size",
+            "width": 526,
+            "height": 483.6
+          },
+          "_resize": 1,
+          "_N$layoutType": 2,
+          "_N$paddingTop": 10,
+          "_N$spacingY": 20
+        },
+        {
+          "__type__": "cc.Widget",
+          "node": {
+            "__id__": 9
+          },
+          "_alignFlags": 1
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "39mAuV965OsZeZrnrlxwsE"
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 526,
+        "height": 483.6
+      },
+      "_anchorPoint": {
+        "__type__": "cc.Vec2",
+        "x": 0.5,
+        "y": 1
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          0,
+          190,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "item",
+      "_parent": {
+        "__id__": 9
+      },
+      "_components": [
+        {
+          "__type__": "cc.Label",
+          "node": {
+            "__id__": 10
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_useOriginalSize": false,
+          "_string": "        撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机",
+          "_N$string": "        撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机",
+          "_fontSize": 16,
+          "_lineHeight": 20,
+          "_N$file": {
+            "__uuid__": "bcogdoz1tLfbeyAkU44/DX"
+          },
+          "_isSystemFontUsed": false,
+          "_N$overflow": 2
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "fcu53Q/BVCh5iFbNeJxB6/"
+      },
+      "_color": {
+        "__type__": "cc.Color",
+        "r": 162,
+        "g": 109,
+        "b": 69
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 526,
+        "height": 103.4
+      },
+      "_anchorPoint": {
+        "__type__": "cc.Vec2",
+        "y": 0.9909504844760771
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          -263,
+          -10.935719905173624,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "item",
+      "_parent": {
+        "__id__": 9
+      },
+      "_components": [
+        {
+          "__type__": "cc.Label",
+          "node": {
+            "__id__": 11
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_useOriginalSize": false,
+          "_string": "        撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机",
+          "_N$string": "        撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机",
+          "_fontSize": 16,
+          "_lineHeight": 20,
+          "_N$file": {
+            "__uuid__": "bcogdoz1tLfbeyAkU44/DX"
+          },
+          "_isSystemFontUsed": false,
+          "_N$overflow": 2
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "6eYecNDJRLqqutFKGYgTAS"
+      },
+      "_color": {
+        "__type__": "cc.Color",
+        "r": 162,
+        "g": 109,
+        "b": 69
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 526,
+        "height": 103.4
+      },
+      "_anchorPoint": {
+        "__type__": "cc.Vec2",
+        "y": 0.9909504844760771
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          -263,
+          -134.33571990517362,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "item",
+      "_parent": {
+        "__id__": 9
+      },
+      "_components": [
+        {
+          "__type__": "cc.Label",
+          "node": {
+            "__id__": 12
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_useOriginalSize": false,
+          "_string": "        撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机",
+          "_N$string": "        撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机",
+          "_fontSize": 16,
+          "_lineHeight": 20,
+          "_N$file": {
+            "__uuid__": "bcogdoz1tLfbeyAkU44/DX"
+          },
+          "_isSystemFontUsed": false,
+          "_N$overflow": 2
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "ff5LMotlxJtK6udgyY+dqb"
+      },
+      "_color": {
+        "__type__": "cc.Color",
+        "r": 162,
+        "g": 109,
+        "b": 69
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 526,
+        "height": 103.4
+      },
+      "_anchorPoint": {
+        "__type__": "cc.Vec2",
+        "y": 0.9909504844760771
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          -263,
+          -257.7357199051736,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "__type__": "cc.Node",
+      "_name": "item",
+      "_parent": {
+        "__id__": 9
+      },
+      "_components": [
+        {
+          "__type__": "cc.Label",
+          "node": {
+            "__id__": 13
+          },
+          "_materials": [
+            {
+              "__uuid__": "ecpdLyjvZBwrvm+cedCcQy"
+            }
+          ],
+          "_useOriginalSize": false,
+          "_string": "        撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机",
+          "_N$string": "        撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机撒打飞机撒解放路口来打深V禄口街道老师打客服考虑到撒即可冷风机",
+          "_fontSize": 16,
+          "_lineHeight": 20,
+          "_N$file": {
+            "__uuid__": "bcogdoz1tLfbeyAkU44/DX"
+          },
+          "_isSystemFontUsed": false,
+          "_N$overflow": 2
+        }
+      ],
+      "_prefab": {
+        "__type__": "cc.PrefabInfo",
+        "root": {
+          "__id__": 1
+        },
+        "asset": {
+          "__uuid__": "f1C8l2CKhF05keWuIDjb5S"
+        },
+        "fileId": "a3N86LVT9HkbgIGT3rC1KL"
+      },
+      "_color": {
+        "__type__": "cc.Color",
+        "r": 162,
+        "g": 109,
+        "b": 69
+      },
+      "_contentSize": {
+        "__type__": "cc.Size",
+        "width": 526,
+        "height": 103.4
+      },
+      "_anchorPoint": {
+        "__type__": "cc.Vec2",
+        "y": 0.9909504844760771
+      },
+      "_trs": {
+        "__type__": "TypedArray",
+        "ctor": "Float64Array",
+        "array": [
+          -263,
+          -381.13571990517363,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ]
+]

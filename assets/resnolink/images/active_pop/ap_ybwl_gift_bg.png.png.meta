@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "b60bf48c-6830-4da6-8288-4d6ea72a855e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 76,
+  "height": 76,
+  "platformSettings": {},
+  "subMetas": {
+    "ap_ybwl_gift_bg.png": {
+      "ver": "1.0.4",
+      "uuid": "b337a588-3091-40e9-ab2e-0603d9517d0f",
+      "rawTextureUuid": "b60bf48c-6830-4da6-8288-4d6ea72a855e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 76,
+      "height": 76,
+      "rawWidth": 76,
+      "rawHeight": 76,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "5cdc0eb8-bb2a-48df-b47b-165cd2a4f197",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 132,
+  "height": 44,
+  "platformSettings": {},
+  "subMetas": {
+    "pt_duangong_img": {
+      "ver": "1.0.4",
+      "uuid": "2dda2d58-176b-4b2a-a256-1eced62d5e73",
+      "rawTextureUuid": "5cdc0eb8-bb2a-48df-b47b-165cd2a4f197",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 132,
+      "height": 44,
+      "rawWidth": 132,
+      "rawHeight": 44,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

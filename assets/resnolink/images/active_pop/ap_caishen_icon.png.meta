@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "da5f60a9-fe5b-467b-86f2-18d4edb80af1",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 266,
+  "height": 469,
+  "platformSettings": {},
+  "subMetas": {
+    "ap_caishen_icon": {
+      "ver": "1.0.4",
+      "uuid": "47952085-731b-4bd0-96b0-1ccaeee17bd7",
+      "rawTextureUuid": "da5f60a9-fe5b-467b-86f2-18d4edb80af1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 266,
+      "height": 469,
+      "rawWidth": 266,
+      "rawHeight": 469,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

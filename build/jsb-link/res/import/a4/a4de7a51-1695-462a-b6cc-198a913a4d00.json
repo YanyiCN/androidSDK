@@ -1,0 +1,104 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "skin_head_105",
+  "_skeletonJson": {
+    "skeleton": {
+      "hash": "PFAbfF7xXZAXm9YQbxGR54JhxfE",
+      "spine": "3.6.53",
+      "width": 142,
+      "height": 148,
+      "images": "./images/"
+    },
+    "bones": [
+      {
+        "name": "root"
+      }
+    ],
+    "slots": [
+      {
+        "name": "11",
+        "bone": "root",
+        "attachment": "11"
+      }
+    ],
+    "skins": {
+      "default": {
+        "11": {
+          "11": {
+            "x": 1.03,
+            "y": 5.55,
+            "width": 142,
+            "height": 148
+          }
+        }
+      }
+    },
+    "animations": {
+      "animation": {
+        "bones": {
+          "root": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.0333,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0.29,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.0333,
+                "x": 0.29,
+                "y": 0
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.0333,
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.0333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\r\nskin_head_105.png\r\nsize: 256,256\r\nformat: RGBA8888\r\nfilter: Linear,Linear\r\nrepeat: none\r\n11\r\n  rotate: false\r\n  xy: 2, 2\r\n  size: 142, 148\r\n  orig: 142, 148\r\n  offset: 0, 0\r\n  index: -1\r\n",
+  "textures": [
+    {
+      "__uuid__": "c3uMwuvAJD4oQG8KFBae6M"
+    }
+  ],
+  "textureNames": [
+    "skin_head_105.png"
+  ]
+}

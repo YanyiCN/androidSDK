@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "204a43d3-19c1-46da-ac1e-13a5fde35a8d",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 111,
+  "height": 110,
+  "platformSettings": {},
+  "subMetas": {
+    "hs_carnival_icon": {
+      "ver": "1.0.4",
+      "uuid": "09dd4cb5-29b7-4921-b65c-d99b2c1713ad",
+      "rawTextureUuid": "204a43d3-19c1-46da-ac1e-13a5fde35a8d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 111,
+      "height": 110,
+      "rawWidth": 111,
+      "rawHeight": 110,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

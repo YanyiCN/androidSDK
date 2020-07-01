@@ -1,0 +1,104 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "skin_head_103",
+  "_skeletonJson": {
+    "skeleton": {
+      "hash": "xaBNz7VCvVjPZ7JGIx6H8ruuSKQ",
+      "spine": "3.6.53",
+      "width": 137,
+      "height": 135,
+      "images": "E:\\宋寒\\来打麻将\\主题解锁\\头像框\\6月限定\\images"
+    },
+    "bones": [
+      {
+        "name": "root"
+      }
+    ],
+    "slots": [
+      {
+        "name": "1",
+        "bone": "root",
+        "attachment": "1"
+      }
+    ],
+    "skins": {
+      "default": {
+        "1": {
+          "1": {
+            "x": 7.51,
+            "y": 3.03,
+            "width": 137,
+            "height": 135
+          }
+        }
+      }
+    },
+    "animations": {
+      "animation": {
+        "bones": {
+          "root": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.0333,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.0333,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.0333,
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.0333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\r\nskin_head_103.png\r\nsize: 256,256\r\nformat: RGBA8888\r\nfilter: Linear,Linear\r\nrepeat: none\r\n1\r\n  rotate: false\r\n  xy: 2, 2\r\n  size: 137, 135\r\n  orig: 137, 135\r\n  offset: 0, 0\r\n  index: -1\r\n",
+  "textures": [
+    {
+      "__uuid__": "d2THc6ErxEC5cra0kV+0cb"
+    }
+  ],
+  "textureNames": [
+    "skin_head_103.png"
+  ]
+}

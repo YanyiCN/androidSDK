@@ -1,0 +1,126 @@
+{
+"skeleton": {
+	"hash": "IEw84tRsKWJ49+tGGAGaUbuQFUM",
+	"spine": "3.8.95",
+	"x": -14.07,
+	"y": -12.33,
+	"width": 27.53,
+	"height": 31,
+	"images": "./images/",
+	"audio": "F:/宋寒/A斗地主/登录游戏/images"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "z", "parent": "root" },
+	{ "name": "1", "parent": "z" },
+	{ "name": "2", "parent": "z", "x": -0.53 },
+	{ "name": "3", "parent": "z" },
+	{ "name": "4", "parent": "z" }
+],
+"slots": [
+	{ "name": "1", "bone": "1", "attachment": "1" },
+	{ "name": "2", "bone": "2", "attachment": "2" },
+	{ "name": "3", "bone": "3", "attachment": "3" },
+	{ "name": "4", "bone": "4", "attachment": "4" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"1": {
+				"1": { "x": -0.04, "y": 2.17, "width": 27, "height": 29 }
+			},
+			"2": {
+				"2": { "x": -0.04, "y": 2.17, "width": 27, "height": 23 }
+			},
+			"3": {
+				"3": { "x": -0.04, "y": 2.67, "width": 27, "height": 30 }
+			},
+			"4": {
+				"4": { "x": -0.04, "y": 3.17, "width": 27, "height": 31 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"1": {
+				"color": [
+					{ "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.3333, "color": "ffffffff" },
+					{ "time": 1.3667, "color": "ffffff00" }
+				]
+			},
+			"2": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.3, "color": "ffffff00" },
+					{ "time": 1.3333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" }
+				]
+			},
+			"3": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffff00" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 3.3333, "color": "ffffffff" }
+				]
+			},
+			"4": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 3.9667, "color": "ffffff00" },
+					{ "time": 4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 5.3333, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"1": {
+				"scale": [
+					{ "x": 0.01 },
+					{ "time": 0.4, "x": 0.752 },
+					{ "time": 0.6667 },
+					{ "time": 0.9333, "x": 0.753 },
+					{ "time": 1.3333, "x": 0.01 }
+				]
+			},
+			"2": {
+				"scale": [
+					{ "x": 0.01, "curve": "stepped" },
+					{ "time": 1.3, "x": 0.01, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0.01 },
+					{ "time": 1.7333, "x": 0.753 },
+					{ "time": 2 },
+					{ "time": 2.2667, "x": 0.752 },
+					{ "time": 2.6667, "x": 0.01 }
+				]
+			},
+			"3": {
+				"scale": [
+					{ "x": 0.01, "curve": "stepped" },
+					{ "time": 2.6333, "x": 0.01, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0.01 },
+					{ "time": 3.0667, "x": 0.753 },
+					{ "time": 3.3333 },
+					{ "time": 3.6, "x": 0.752 },
+					{ "time": 4, "x": 0.01 }
+				]
+			},
+			"4": {
+				"scale": [
+					{ "x": 0.01, "curve": "stepped" },
+					{ "time": 4, "x": 0.01 },
+					{ "time": 4.4, "x": 0.753 },
+					{ "time": 4.6667 },
+					{ "time": 4.9333, "x": 0.752 },
+					{ "time": 5.3333, "x": 0.01 }
+				]
+			}
+		}
+	}
+}
+}

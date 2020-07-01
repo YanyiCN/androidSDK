@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "25c23ad6-1264-44bb-9780-ec4909e156df",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 163,
+  "height": 171,
+  "platformSettings": {},
+  "subMetas": {
+    "atp_landlord_icon": {
+      "ver": "1.0.4",
+      "uuid": "6adcee5c-478c-4a85-92e6-8e74eb4b3b67",
+      "rawTextureUuid": "25c23ad6-1264-44bb-9780-ec4909e156df",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 163,
+      "height": 171,
+      "rawWidth": 163,
+      "rawHeight": 171,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "eeaf5da7-c78a-4f58-8eef-62702f3b07f8",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 278,
+  "height": 204,
+  "platformSettings": {},
+  "subMetas": {
+    "gwg_xinshou_room_bg": {
+      "ver": "1.0.4",
+      "uuid": "881bd0cc-ae40-460c-95bd-0b7f7f269609",
+      "rawTextureUuid": "eeaf5da7-c78a-4f58-8eef-62702f3b07f8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 278,
+      "height": 204,
+      "rawWidth": 278,
+      "rawHeight": 204,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "skin_head_104",
+    "texture": "30JX7JkmtFK6KzRUjL7/0P",
+    "rect": [
+      2,
+      2,
+      148,
+      143
+    ],
+    "offset": [
+      -52,
+      54.5
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
