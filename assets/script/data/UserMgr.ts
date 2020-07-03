@@ -604,11 +604,5 @@ class UserMgr extends MyMgr {
             config_type_list: configType
         });
     }
-
-    public onJava(param: any) {
-        console.log(param);
-        let pa = JSON.parse(param)
-        glb.sendEvent(EventType.Cocos2dxJavascriptJavaBridge, pa.param);
-    }
 }
 export default new UserMgr();

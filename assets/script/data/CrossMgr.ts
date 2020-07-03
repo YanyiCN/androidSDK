@@ -79,6 +79,7 @@ class CrossMgr extends MyMgr {
     public uninitMgr() { }
 
     private onCrossCall(callId: number, paramsStr: string) {
+        console.log("init all  android ");
         mlog.debug("callGame trans:", callId, paramsStr)
         let params = null;
         if (paramsStr != null && paramsStr != "") {
@@ -86,7 +87,11 @@ class CrossMgr extends MyMgr {
         }
         if (callId == CrossType.LF_SDK_LOGIN) {
             glb.sendEvent(EventType.CROSS_SDK_LOGIN_RES, params)
-        } else if (callId == CrossType.LF_PAY) {
+        } else if (callId == CrossType.LF_PAY) { 
+            console.log("支付-LF_PAY 1" + params)
+            glb.sendEvent(EventType.CROSS_SDK_PAY_RES, params)
+        } else if (callId == CrossType.LF_PAY_FAILD) {
+            console.log("支付-LF_PAY 0" + params)
             glb.sendEvent(EventType.CROSS_SDK_PAY_RES, params)
         } else if (callId == CrossType.LF_SHARE) {
             glb.sendEvent(EventType.CROSS_WX_SHARE_RES, params)

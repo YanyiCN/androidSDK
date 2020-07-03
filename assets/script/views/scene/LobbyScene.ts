@@ -117,18 +117,24 @@ export default class LobbyScene extends MyScene {
     public getSceneType(): string {
         return SceneType.LOBBY_SCENE;
     }
- 
+
     getBgNode(): cc.Node {
         return this.nodeBg;
-    }
+    } 
 
     onExtLoad() {
-        this.regLis(EventType.Cocos2dxJavascriptJavaBridge, (param) => {
-            console.log("神舟五号发射成功  ",UserMgr.getUserInfo().nickName,"   param: ",param);
-            PopMgr.showPop(PopLayer.POP_SET);
+        //支付成功测试
+        this.regLis(EventType.CROSS_SDK_PAY_RES, (param) => { 
+            if (param.code == 0) {
+                console.log("支付失败 ", "   result: ", param.result);
+                PopMgr.alert("支付失败");
+            } else if (param.code == 1) {
+                console.log("支付成功 ", "   result: ", param.result);
+                PopMgr.alert("支付成功");
+            }
         })
         this.regLis(EventType.RED_POINT_UPDATE, this.onUpdateRedManage);
-        this.regLis(EventType.UPDATE_USERINFO, this.updateUserInfo); 
+        this.regLis(EventType.UPDATE_USERINFO, this.updateUserInfo);
         this.regLis(EventType.UPDATE_USER_MONEY, this.onUserMoneyChange);
         this.regLis(EventType.CHANGE_NICK_NAME_SUCCEED, this.onChangeName);
         this.regLis(EventType.SKIN_HEAD_CHANGE_SUCCEED, this.onChangeSkinHead);
@@ -219,6 +225,7 @@ export default class LobbyScene extends MyScene {
                 PopMgr.showPop(PopLayer.POP_SET_CONTACT_SERVICE)
                 break;
             case BtnTags.VIP:
+                CrossMgr.doPay(1, "", "", 1111112, null, 1);
                 PopMgr.showPop(PopLayer.POP_VIP)
                 break;
             case BtnTags.TASK:

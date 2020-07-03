@@ -95,12 +95,6 @@ android {
             }
         }
     }
-
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
 }
 
 android.applicationVariants.all { variant ->

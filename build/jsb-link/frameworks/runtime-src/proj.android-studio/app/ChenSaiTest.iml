@@ -262,6 +262,8 @@
     <orderEntry type="library" name="Gradle: __local_aars__:C./CocosDashboard_1.0.5/resources/.editors/Creator/2.3.4/resources/cocos2d-x/cocos/platform/android/java/libs/com.android.vending.expansion.zipfile.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C./CocosDashboard_1.0.5/resources/.editors/Creator/2.3.4/resources/cocos2d-x/cocos/platform/android/java/libs/okhttp-3.12.7.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C./CocosDashboard_1.0.5/resources/.editors/Creator/2.3.4/resources/cocos2d-x/cocos/platform/android/java/libs/okio-1.15.0.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:C./Users/Win10/.gradle/caches/transforms-1/files-1.1/alipaySdk-15.7.6-20200521195109.aar/92eb8ad94d1c8e5b3a20734bd538281b:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: :alipaySdk-15.7.6-20200521195109:@aar" level="project" />
     <orderEntry type="module" module-name="libcocos2dx" />
   </component>
 </module>

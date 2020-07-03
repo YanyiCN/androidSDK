@@ -4348,7 +4348,10 @@ window.__require = function e(t, n, r) {
         this.cacheWxStartMsg = null;
       }
       CrossAndroid.prototype.call = function(funType, args) {
-        var jsonStr = JSON.stringify(args || {});
+        var jsonStr = JSON.stringify({
+          funType: funType,
+          args: args || ""
+        });
         return this.callJava(funType, jsonStr);
       };
       CrossAndroid.prototype.callJava = function(funType, jsonStr) {
@@ -4356,26 +4359,46 @@ window.__require = function e(t, n, r) {
         LogUtil_1.default.debug("callJava funType:", funType, " res:", res);
         return res;
       };
-      CrossAndroid.prototype.onCallJava = function(classPath, functionName, functionFlag, args) {
-        var jsonStr = JSON.stringify(args || {});
-        console.log("makeShock android shark args   ", jsonStr);
-        var res = jsb.reflection.callStaticMethod(classPath, functionName, functionFlag, jsonStr);
-        LogUtil_1.default.info("makeShock android shark args end  ", jsonStr);
+      CrossAndroid.prototype.onCallJava = function(funType, args) {
+        var jsonStr = JSON.stringify({
+          funType: funType,
+          args: args || ""
+        });
+        var res = jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "TsBridge", "(Ljava/lang/String;)Ljava/lang/String;", jsonStr);
+        LogUtil_1.default.info(" android  args end ", jsonStr);
         return res;
       };
       CrossAndroid.prototype.initAll = function(funCallback) {
+        var _this = this;
         this.funCallback = funCallback;
+        window["JavaBridge"] = function(handleType, handleArgs) {
+          LogUtil_1.default.info("ocCall handleType:", handleType, " handleArgs:", handleArgs);
+          _this.funCallback(handleType, handleArgs);
+          console.log("init all  android ");
+        };
+        console.log("testtt end");
       };
       CrossAndroid.prototype.supportPayList = function() {
         return {};
       };
       CrossAndroid.prototype.prePay = function(payType) {
+        var _this = this;
         return new Promise(function(res, rej) {
-          res(null);
+          res(_this.call(CrossBase_1.CrossType.LF_PRE_PAY, {
+            payType: payType
+          }));
         });
       };
       CrossAndroid.prototype.doPay = function(payType, gameOrderNum, centerOrderNum, price, otherParam, payId) {
-        throw new Error("Method not implemented.");
+        this.onCallJava(CrossBase_1.CrossType.LF_PAY, {
+          payType: payType,
+          gameOrderNum: gameOrderNum,
+          centerOrderNum: centerOrderNum,
+          price: price,
+          otherParam: otherParam,
+          payId: payId
+        });
+        return null;
       };
       CrossAndroid.prototype.doShare = function(params) {
         throw new Error("Method not implemented.");
@@ -4384,16 +4407,10 @@ window.__require = function e(t, n, r) {
         return 1;
       };
       CrossAndroid.prototype.copyText = function(text) {
-        this.onCallJava("org/cocos2dx/javascript/AppActivity", "copyText", "(Ljava/lang/String;)V", {
-          str: text
-        });
         console.log("\u6587\u672c \u590d\u52360", text);
         return false;
       };
-      CrossAndroid.prototype.getCopyText = function(res, rej) {
-        var rr = this.onCallJava("org/cocos2dx/javascript/AppActivity", "getCopyText", "()Ljava/lang/String;");
-        console.log("\u6587\u672c \u590d\u5236", rr);
-      };
+      CrossAndroid.prototype.getCopyText = function(res, rej) {};
       CrossAndroid.prototype.getPowerLevel = function() {
         return 1;
       };
@@ -4415,9 +4432,6 @@ window.__require = function e(t, n, r) {
       };
       CrossAndroid.prototype.makeShock = function() {
         LogUtil_1.default.info("makeShock android shark    CrossAndroid");
-        this.onCallJava("org/cocos2dx/javascript/AppActivity", "vibrator", "(Ljava/lang/String;)V", {
-          time: 800
-        });
       };
       CrossAndroid.prototype.getNetLevel = function() {
         return 3;
@@ -4716,7 +4730,8 @@ window.__require = function e(t, n, r) {
       LF_LOGOUT_BY_SDK: 25,
       LF_SDK_EXIST: 27,
       LF_USER_GAME_INFO: 28,
-      LF_GAME_HIDESHOW: 29
+      LF_GAME_HIDESHOW: 29,
+      LF_PAY_FAILD: 30
     };
     var LoginRes = function() {
       function LoginRes() {}
@@ -5528,10 +5543,17 @@ window.__require = function e(t, n, r) {
       };
       CrossMgr.prototype.uninitMgr = function() {};
       CrossMgr.prototype.onCrossCall = function(callId, paramsStr) {
+        console.log("init all  android ");
         LogUtil_1.default.debug("callGame trans:", callId, paramsStr);
         var params = null;
         null != paramsStr && "" != paramsStr && (params = JSON.parse(paramsStr));
-        if (callId == CrossBase_1.CrossType.LF_SDK_LOGIN) glb_1.default.sendEvent(Const_1.EventType.CROSS_SDK_LOGIN_RES, params); else if (callId == CrossBase_1.CrossType.LF_PAY) glb_1.default.sendEvent(Const_1.EventType.CROSS_SDK_PAY_RES, params); else if (callId == CrossBase_1.CrossType.LF_SHARE) glb_1.default.sendEvent(Const_1.EventType.CROSS_WX_SHARE_RES, params); else if (callId == CrossBase_1.CrossType.LF_GET_START_MSG) glb_1.default.sendEvent(Const_1.EventType.CROSS_WX_START_RES, params); else if (callId == CrossBase_1.CrossType.LF_SYS_BACK_BTN) glb_1.default.sendEvent(Const_1.EventType.CROSS_SYS_EXIT_BTN, params); else if (callId == CrossBase_1.CrossType.LF_GPS_GET_LOC) glb_1.default.sendEvent(Const_1.EventType.CROSS_GPS_GET_DETAIL, params); else if (callId == CrossBase_1.CrossType.LF_LOGOUT_BY_SDK) glb_1.default.sendEvent(Const_1.EventType.CROSS_LOGOUT_BY_SDK, params); else if (callId == CrossBase_1.CrossType.LF_CHECK_NET_STATE) glb_1.default.sendEvent(Const_1.EventType.CROSS_NET_TYPE_CHANGE, params.value); else if (callId == CrossBase_1.CrossType.LF_NET_LEVEL) {
+        if (callId == CrossBase_1.CrossType.LF_SDK_LOGIN) glb_1.default.sendEvent(Const_1.EventType.CROSS_SDK_LOGIN_RES, params); else if (callId == CrossBase_1.CrossType.LF_PAY) {
+          console.log("\u652f\u4ed8-LF_PAY 1" + params);
+          glb_1.default.sendEvent(Const_1.EventType.CROSS_SDK_PAY_RES, params);
+        } else if (callId == CrossBase_1.CrossType.LF_PAY_FAILD) {
+          console.log("\u652f\u4ed8-LF_PAY 0" + params);
+          glb_1.default.sendEvent(Const_1.EventType.CROSS_SDK_PAY_RES, params);
+        } else if (callId == CrossBase_1.CrossType.LF_SHARE) glb_1.default.sendEvent(Const_1.EventType.CROSS_WX_SHARE_RES, params); else if (callId == CrossBase_1.CrossType.LF_GET_START_MSG) glb_1.default.sendEvent(Const_1.EventType.CROSS_WX_START_RES, params); else if (callId == CrossBase_1.CrossType.LF_SYS_BACK_BTN) glb_1.default.sendEvent(Const_1.EventType.CROSS_SYS_EXIT_BTN, params); else if (callId == CrossBase_1.CrossType.LF_GPS_GET_LOC) glb_1.default.sendEvent(Const_1.EventType.CROSS_GPS_GET_DETAIL, params); else if (callId == CrossBase_1.CrossType.LF_LOGOUT_BY_SDK) glb_1.default.sendEvent(Const_1.EventType.CROSS_LOGOUT_BY_SDK, params); else if (callId == CrossBase_1.CrossType.LF_CHECK_NET_STATE) glb_1.default.sendEvent(Const_1.EventType.CROSS_NET_TYPE_CHANGE, params.value); else if (callId == CrossBase_1.CrossType.LF_NET_LEVEL) {
           var vv = Number.parseInt(params.value);
           (vv < 1 || vv > 3) && (vv = 3);
           glb_1.default.sendEvent(Const_1.EventType.CROSS_NET_LEVEL_CHANGE, vv);
@@ -10498,9 +10520,14 @@ window.__require = function e(t, n, r) {
       };
       LobbyScene.prototype.onExtLoad = function() {
         var _this = this;
-        this.regLis(Const_1.EventType.Cocos2dxJavascriptJavaBridge, function(param) {
-          console.log("\u795e\u821f\u4e94\u53f7\u53d1\u5c04\u6210\u529f  ", UserMgr_1.default.getUserInfo().nickName, "   param: ", param);
-          PopMgr_1.default.showPop(Const_1.PopLayer.POP_SET);
+        this.regLis(Const_1.EventType.CROSS_SDK_PAY_RES, function(param) {
+          if (0 == param.code) {
+            console.log("\u652f\u4ed8\u5931\u8d25 ", "   result: ", param.result);
+            PopMgr_1.default.alert("\u652f\u4ed8\u5931\u8d25");
+          } else if (1 == param.code) {
+            console.log("\u652f\u4ed8\u6210\u529f ", "   result: ", param.result);
+            PopMgr_1.default.alert("\u652f\u4ed8\u6210\u529f");
+          }
         });
         this.regLis(Const_1.EventType.RED_POINT_UPDATE, this.onUpdateRedManage);
         this.regLis(Const_1.EventType.UPDATE_USERINFO, this.updateUserInfo);
@@ -10581,6 +10608,7 @@ window.__require = function e(t, n, r) {
           break;
 
          case BtnTags.VIP:
+          CrossMgr_1.default.doPay(1, "", "", 1111112, null, 1);
           PopMgr_1.default.showPop(Const_1.PopLayer.POP_VIP);
           break;
 
@@ -11344,6 +11372,246 @@ window.__require = function e(t, n, r) {
     "../utils/LogUtil": "LogUtil",
     "../utils/glb": "glb"
   } ],
+  MainChildNode: [ function(require, module, exports) {
+    "use strict";
+    cc._RF.push(module, "5529dEgoUFGhYVvsbeywg8u", "MainChildNode");
+    "use strict";
+    var __extends = this && this.__extends || function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || {
+          __proto__: []
+        } instanceof Array && function(d, b) {
+          d.__proto__ = b;
+        } || function(d, b) {
+          for (var p in b) b.hasOwnProperty(p) && (d[p] = b[p]);
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = null === b ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __decorate = this && this.__decorate || function(decorators, target, key, desc) {
+      var c = arguments.length, r = c < 3 ? target : null === desc ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+      if ("object" === typeof Reflect && "function" === typeof Reflect.decorate) r = Reflect.decorate(decorators, target, key, desc); else for (var i = decorators.length - 1; i >= 0; i--) (d = decorators[i]) && (r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r);
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    var TestUtil_1 = require("./TestUtil");
+    var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
+    var MainChildNode = function(_super) {
+      __extends(MainChildNode, _super);
+      function MainChildNode() {
+        var _this = null !== _super && _super.apply(this, arguments) || this;
+        _this.label = null;
+        _this.text = "hello";
+        return _this;
+      }
+      MainChildNode.prototype.onLoad = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainChildNode onLoad", 100);
+      };
+      MainChildNode.prototype.start = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainChildNode start", 100);
+      };
+      MainChildNode.prototype.onDestroy = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainChildNode onDestroy", 100);
+      };
+      __decorate([ property(cc.Label) ], MainChildNode.prototype, "label", void 0);
+      __decorate([ property ], MainChildNode.prototype, "text", void 0);
+      MainChildNode = __decorate([ ccclass ], MainChildNode);
+      return MainChildNode;
+    }(cc.Component);
+    exports.default = MainChildNode;
+    cc._RF.pop();
+  }, {
+    "./TestUtil": "TestUtil"
+  } ],
+  MainNode: [ function(require, module, exports) {
+    "use strict";
+    cc._RF.push(module, "90450dfd3ZLhI2xmXPx83ax", "MainNode");
+    "use strict";
+    var __extends = this && this.__extends || function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || {
+          __proto__: []
+        } instanceof Array && function(d, b) {
+          d.__proto__ = b;
+        } || function(d, b) {
+          for (var p in b) b.hasOwnProperty(p) && (d[p] = b[p]);
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = null === b ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __decorate = this && this.__decorate || function(decorators, target, key, desc) {
+      var c = arguments.length, r = c < 3 ? target : null === desc ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+      if ("object" === typeof Reflect && "function" === typeof Reflect.decorate) r = Reflect.decorate(decorators, target, key, desc); else for (var i = decorators.length - 1; i >= 0; i--) (d = decorators[i]) && (r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r);
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    var TestUtil_1 = require("./TestUtil");
+    var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
+    var MainNode = function(_super) {
+      __extends(MainNode, _super);
+      function MainNode() {
+        var _this = null !== _super && _super.apply(this, arguments) || this;
+        _this.label = null;
+        _this.text = "hello";
+        return _this;
+      }
+      MainNode.prototype.onLoad = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainNode onLoad", 100);
+      };
+      MainNode.prototype.start = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainNode start", 100);
+      };
+      MainNode.prototype.onDestroy = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainNode onDestroy", 100);
+      };
+      __decorate([ property(cc.Label) ], MainNode.prototype, "label", void 0);
+      __decorate([ property ], MainNode.prototype, "text", void 0);
+      MainNode = __decorate([ ccclass ], MainNode);
+      return MainNode;
+    }(cc.Component);
+    exports.default = MainNode;
+    cc._RF.pop();
+  }, {
+    "./TestUtil": "TestUtil"
+  } ],
+  MainPop: [ function(require, module, exports) {
+    "use strict";
+    cc._RF.push(module, "2bbf8PKAepBEIdqCuKU5TGd", "MainPop");
+    "use strict";
+    var __extends = this && this.__extends || function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || {
+          __proto__: []
+        } instanceof Array && function(d, b) {
+          d.__proto__ = b;
+        } || function(d, b) {
+          for (var p in b) b.hasOwnProperty(p) && (d[p] = b[p]);
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = null === b ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __decorate = this && this.__decorate || function(decorators, target, key, desc) {
+      var c = arguments.length, r = c < 3 ? target : null === desc ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+      if ("object" === typeof Reflect && "function" === typeof Reflect.decorate) r = Reflect.decorate(decorators, target, key, desc); else for (var i = decorators.length - 1; i >= 0; i--) (d = decorators[i]) && (r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r);
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    var TestUtil_1 = require("./TestUtil");
+    var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
+    var MainPop = function(_super) {
+      __extends(MainPop, _super);
+      function MainPop() {
+        var _this = null !== _super && _super.apply(this, arguments) || this;
+        _this.label = null;
+        _this.text = "hello";
+        return _this;
+      }
+      MainPop.prototype.onLoad = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainPop onLoad", 100);
+      };
+      MainPop.prototype.start = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainPop start", 100);
+      };
+      MainPop.prototype.onDestroy = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainPop onDestroy", 100);
+      };
+      __decorate([ property(cc.Label) ], MainPop.prototype, "label", void 0);
+      __decorate([ property ], MainPop.prototype, "text", void 0);
+      MainPop = __decorate([ ccclass ], MainPop);
+      return MainPop;
+    }(cc.Component);
+    exports.default = MainPop;
+    cc._RF.pop();
+  }, {
+    "./TestUtil": "TestUtil"
+  } ],
+  MainSecene: [ function(require, module, exports) {
+    "use strict";
+    cc._RF.push(module, "b3b80lbWtlCXJRZSF7bzMVr", "MainSecene");
+    "use strict";
+    var __extends = this && this.__extends || function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || {
+          __proto__: []
+        } instanceof Array && function(d, b) {
+          d.__proto__ = b;
+        } || function(d, b) {
+          for (var p in b) b.hasOwnProperty(p) && (d[p] = b[p]);
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = null === b ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __decorate = this && this.__decorate || function(decorators, target, key, desc) {
+      var c = arguments.length, r = c < 3 ? target : null === desc ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+      if ("object" === typeof Reflect && "function" === typeof Reflect.decorate) r = Reflect.decorate(decorators, target, key, desc); else for (var i = decorators.length - 1; i >= 0; i--) (d = decorators[i]) && (r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r);
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    var TestUtil_1 = require("./TestUtil");
+    var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
+    var MainSecene = function(_super) {
+      __extends(MainSecene, _super);
+      function MainSecene() {
+        var _this = null !== _super && _super.apply(this, arguments) || this;
+        _this.label = null;
+        _this.text = "hello";
+        return _this;
+      }
+      MainSecene.prototype.onLoad = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainSecene onLoad", 100);
+      };
+      MainSecene.prototype.start = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainSecene start", 100);
+      };
+      MainSecene.prototype.onDestroy = function() {
+        TestUtil_1.TestUtil.ConsoleLog("MainSecene onDestroy", 100);
+      };
+      __decorate([ property(cc.Label) ], MainSecene.prototype, "label", void 0);
+      __decorate([ property ], MainSecene.prototype, "text", void 0);
+      MainSecene = __decorate([ ccclass ], MainSecene);
+      return MainSecene;
+    }(cc.Component);
+    exports.default = MainSecene;
+    cc._RF.pop();
+  }, {
+    "./TestUtil": "TestUtil"
+  } ],
   Main: [ function(require, module, exports) {
     "use strict";
     cc._RF.push(module, "e1b90/rohdEk4SdmmEZANaD", "Main");
@@ -11505,7 +11773,6 @@ window.__require = function e(t, n, r) {
     var SceneMgr_1 = require("./data/SceneMgr");
     var SetMgr_1 = require("./data/SetMgr");
     var ShopMgr_1 = require("./data/ShopMgr");
-    var UserMgr_1 = require("./data/UserMgr");
     var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
     var Main = function(_super) {
       __extends(Main, _super);
@@ -11550,7 +11817,7 @@ window.__require = function e(t, n, r) {
       };
       Main.prototype.startInitGame = function(cfgJson) {
         return __awaiter(this, void 0, void 0, function() {
-          var mgrList, _i, mgrList_1, mgr, localDeviceVer, _a, _b, shVer, jsonStr, isBeforeUpdate, error_1;
+          var mgrList, _i, mgrList_1, mgr, localDeviceVer, _a, _b, shVer, jsonstr, test, jsonStr, isBeforeUpdate, error_1;
           return __generator(this, function(_c) {
             switch (_c.label) {
              case 0:
@@ -11565,7 +11832,6 @@ window.__require = function e(t, n, r) {
 
              case 1:
               _c.sent();
-              window["JavaWWWWWBridge"] = UserMgr_1.default;
               FloatMgr_1.default.initMgr();
               glb_1.default.initMgr();
               SetMgr_1.default.initMgr();
@@ -11580,6 +11846,14 @@ window.__require = function e(t, n, r) {
                 }
               }
               ClientCfg_1.ClientCfg.openVipClub || (ClientCfg_1.ClientCfg.simpleVipClub = true);
+              jsonstr = JSON.stringify({
+                s: "\u6211\u7684\u4e2a\u4e56\u4e56\uff01\uff01\uff01"
+              });
+              console.log({
+                s: "\u6211\u7684\u4e2a\u4e56\u4e56\uff01\uff01\uff01"
+              });
+              test = JSON.parse(jsonstr);
+              console.log("oopopopop" + test.s);
               SoundMgr_1.default.initMgr();
               TalkMgr_1.default.initMgr();
               jsonStr = JSON.stringify({
@@ -11630,7 +11904,6 @@ window.__require = function e(t, n, r) {
     "./data/ShopMgr": "ShopMgr",
     "./data/SoundMgr": "SoundMgr",
     "./data/TalkMgr": "TalkMgr",
-    "./data/UserMgr": "UserMgr",
     "./define/ClientCfg": "ClientCfg",
     "./define/Const": "Const",
     "./utils/BuglyUtil": "BuglyUtil",
@@ -19974,6 +20247,26 @@ window.__require = function e(t, n, r) {
     "../../../define/Const": "Const",
     "../../../utils/ComUtil": "ComUtil"
   } ],
+  TestUtil: [ function(require, module, exports) {
+    "use strict";
+    cc._RF.push(module, "c2020XxVEZIOoDuxLddCDR+", "TestUtil");
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    var TestUtil = function() {
+      function TestUtil() {}
+      TestUtil.ConsoleLog = function(msg, num) {
+        void 0 === num && (num = 100);
+        var Dates = new Date();
+        console.log(msg + "\u6253\u5370\u6d4b\u8bd5    \n\u6253\u5370\u65f6\u95f4  " + Dates.toLocaleString());
+        for (var i = 0; i < num; i++) console.log(msg + "\u6253\u5370\u6d4b\u8bd5  " + i);
+      };
+      return TestUtil;
+    }();
+    exports.TestUtil = TestUtil;
+    cc._RF.pop();
+  }, {} ],
   Texts: [ function(require, module, exports) {
     "use strict";
     cc._RF.push(module, "a5eddgE6y9Neqe8EjP25IMJ", "Texts");
@@ -21029,11 +21322,6 @@ window.__require = function e(t, n, r) {
         glb_1.default.sendMsg(Const_1.MsgType.UserDataReq, {
           config_type_list: configType
         });
-      };
-      UserMgr.prototype.onJava = function(param) {
-        console.log(param);
-        var pa = JSON.parse(param);
-        glb_1.default.sendEvent(Const_1.EventType.Cocos2dxJavascriptJavaBridge, pa.param);
       };
       return UserMgr;
     }(MyMgr_1.default);
@@ -28557,4 +28845,4 @@ window.__require = function e(t, n, r) {
   }, {
     "protobufjs/minimal": 8
   } ]
-}, {}, [ "Main", "MyData", "MyLayer", "MyMgr", "MyNode", "MyNodePool", "MyPop", "MyScene", "MySocket", "AdMgr", "BagMgr", "CrossMgr", "FloatMgr", "InviteMgr", "MailMgr", "PopMgr", "ProfileMgr", "RankingMgr", "RealInfoMgr", "RedPointMgr", "SceneMgr", "SetMgr", "ShopMgr", "SoundMgr", "TalkMgr", "UmengMgr", "UserMgr", "VipMgr", "ActiveMgr", "ActiveMgrBaiCaishen", "ActiveMgrBase", "ActiveMgrCarnival", "ActiveMgrLoginSignin", "ActiveMgrProfits", "ActiveMgrSignin", "ActiveMgrTaskChallenge", "ActiveMgrTaskDaily", "ActiveMgrTaskGrowth", "ActiveMgrTaskThreeDays", "CfgActiveBaiCaishen", "CfgActiveCarnival", "CfgActiveLoginSignin", "CfgActiveProfits", "CfgDan", "CfgGameTree", "CfgGameWanFa", "CfgInviteGift", "CfgTaskChallenge", "CfgTaskDaily", "CfgTaskGrowth", "CfgTaskThreeDays", "CrossAndroid", "CrossBaidu", "CrossHuawei", "CrossIos", "CrossMac", "CrossOppo", "CrossUnknown", "CrossWeb", "CrossWin", "CrossWxGame", "CrossBase", "CrossWebTest", "CrossWebXiaomi", "ActiveBaiCaishenData", "ActiveCarnivalData", "ActiveLoginSigninData", "ActiveProfitsData", "ActiveTaskChallengeData", "ActiveTaskDailyData", "ActiveTaskGrowthData", "ActiveTaskThreeDaysData", "ChannelBean", "DependRes", "ReceiveSerDataTree", "SeasonInfo", "UserData", "UserGameData", "UserInfo", "GameMgr", "ClientCfg", "Const", "PopMap", "Texts", "proto", "ProtobufTset", "BuglyUtil", "ComUtil", "FileUtil", "HttpUtil", "LogUtil", "PromiseUtil", "ResUtil", "ViewUtil", "MyLabel", "glb", "GpsLocUtil", "ImgBtnNode", "HeadBoxSprite", "LoadingCon", "LoadingRes", "NetStateTip", "PageFoot", "SelectBtn", "GrowthRouteNode", "OrdinarySignInNode", "BagPop", "ChangeHeadPhotoPop", "ChangeNickNamePop", "InviteGiftPop", "MailListPop", "PlayingMethodPop", "WatchADPop", "ActiveBaiCaishenLayer", "ActivePanelPop", "ActiveProfitsLayer", "ActiveSigninLayer", "CarnivalGrowthLayer", "CarnivalPaixingLayer", "CarnivalPanelPop", "CarnivalRankLayer", "CarnivalSevenSigninLayer", "CarnivalSkillsLayer", "AlertPop", "GetAwardPop", "LoadingBar", "ReEnterPop", "SelectBtnLayer", "TipPop", "WebViewPop", "DebugFunPop", "GameModeNormalLayer", "GameWanfaPop", "LoginAgreementPop", "LoginPhonePop", "ProfileDataLayer", "ProfileHonorLayer", "ProfilePanelPop", "ProfileRecordLayer", "ProfileSkinLayer", "ProfileTitleLayer", "RankingExplainPop", "RankingListPop", "SetAccountSafetyPop", "SetBindPhonePop", "SetCertificationPop", "SetChangePhonePop", "SetContactServicePop", "SetFeedbackDetailsPop", "SetFeedbackPop", "SetManagePop", "ShopBuyPropTipPop", "ShopBuyWay", "ShopGemLayer", "ShopGoldLayer", "ShopManagePop", "ShopPayLoadingLayer", "ShopPropLayer", "ShopSkinLayer", "DailySignInPop", "DailySignInTipPop", "TaskChallengeLayer", "TaskDailyLayer", "TaskGrowthLayer", "TaskPanelPop", "TaskThreeDaysLayer", "VipPageViewItemLayer", "VipPop", "WelfareCouponLayer", "WelfareGemLayer", "WelfareGoldLayer", "WelfarePanelPop", "LobbyScene", "LoginScene", "LogoScene", "UpdateScene" ]);
+}, {}, [ "Main", "MyData", "MyLayer", "MyMgr", "MyNode", "MyNodePool", "MyPop", "MyScene", "MySocket", "AdMgr", "BagMgr", "CrossMgr", "FloatMgr", "InviteMgr", "MailMgr", "PopMgr", "ProfileMgr", "RankingMgr", "RealInfoMgr", "RedPointMgr", "SceneMgr", "SetMgr", "ShopMgr", "SoundMgr", "TalkMgr", "UmengMgr", "UserMgr", "VipMgr", "ActiveMgr", "ActiveMgrBaiCaishen", "ActiveMgrBase", "ActiveMgrCarnival", "ActiveMgrLoginSignin", "ActiveMgrProfits", "ActiveMgrSignin", "ActiveMgrTaskChallenge", "ActiveMgrTaskDaily", "ActiveMgrTaskGrowth", "ActiveMgrTaskThreeDays", "CfgActiveBaiCaishen", "CfgActiveCarnival", "CfgActiveLoginSignin", "CfgActiveProfits", "CfgDan", "CfgGameTree", "CfgGameWanFa", "CfgInviteGift", "CfgTaskChallenge", "CfgTaskDaily", "CfgTaskGrowth", "CfgTaskThreeDays", "CrossAndroid", "CrossBaidu", "CrossHuawei", "CrossIos", "CrossMac", "CrossOppo", "CrossUnknown", "CrossWeb", "CrossWin", "CrossWxGame", "CrossBase", "CrossWebTest", "CrossWebXiaomi", "ActiveBaiCaishenData", "ActiveCarnivalData", "ActiveLoginSigninData", "ActiveProfitsData", "ActiveTaskChallengeData", "ActiveTaskDailyData", "ActiveTaskGrowthData", "ActiveTaskThreeDaysData", "ChannelBean", "DependRes", "ReceiveSerDataTree", "SeasonInfo", "UserData", "UserGameData", "UserInfo", "GameMgr", "ClientCfg", "Const", "PopMap", "Texts", "proto", "MainChildNode", "MainNode", "MainPop", "MainSecene", "ProtobufTset", "TestUtil", "BuglyUtil", "ComUtil", "FileUtil", "HttpUtil", "LogUtil", "PromiseUtil", "ResUtil", "ViewUtil", "MyLabel", "glb", "GpsLocUtil", "ImgBtnNode", "HeadBoxSprite", "LoadingCon", "LoadingRes", "NetStateTip", "PageFoot", "SelectBtn", "GrowthRouteNode", "OrdinarySignInNode", "BagPop", "ChangeHeadPhotoPop", "ChangeNickNamePop", "InviteGiftPop", "MailListPop", "PlayingMethodPop", "WatchADPop", "ActiveBaiCaishenLayer", "ActivePanelPop", "ActiveProfitsLayer", "ActiveSigninLayer", "CarnivalGrowthLayer", "CarnivalPaixingLayer", "CarnivalPanelPop", "CarnivalRankLayer", "CarnivalSevenSigninLayer", "CarnivalSkillsLayer", "AlertPop", "GetAwardPop", "LoadingBar", "ReEnterPop", "SelectBtnLayer", "TipPop", "WebViewPop", "DebugFunPop", "GameModeNormalLayer", "GameWanfaPop", "LoginAgreementPop", "LoginPhonePop", "ProfileDataLayer", "ProfileHonorLayer", "ProfilePanelPop", "ProfileRecordLayer", "ProfileSkinLayer", "ProfileTitleLayer", "RankingExplainPop", "RankingListPop", "SetAccountSafetyPop", "SetBindPhonePop", "SetCertificationPop", "SetChangePhonePop", "SetContactServicePop", "SetFeedbackDetailsPop", "SetFeedbackPop", "SetManagePop", "ShopBuyPropTipPop", "ShopBuyWay", "ShopGemLayer", "ShopGoldLayer", "ShopManagePop", "ShopPayLoadingLayer", "ShopPropLayer", "ShopSkinLayer", "DailySignInPop", "DailySignInTipPop", "TaskChallengeLayer", "TaskDailyLayer", "TaskGrowthLayer", "TaskPanelPop", "TaskThreeDaysLayer", "VipPageViewItemLayer", "VipPop", "WelfareCouponLayer", "WelfareGemLayer", "WelfareGoldLayer", "WelfarePanelPop", "LobbyScene", "LoginScene", "LogoScene", "UpdateScene" ]);

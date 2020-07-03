@@ -24,6 +24,8 @@
  ****************************************************************************/
 package org.cocos2dx.javascript;
 
+import org.Alipay.sdk.AlipaySdk;
+import org.cocos2d.demo.R;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 import org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge;
@@ -49,13 +51,29 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.alipay.sdk.app.EnvUtils;
+
+import java.lang.reflect.Field;
+
 public class AppActivity extends Cocos2dxActivity {
     public static Vibrator myVibrator;
     private static AppActivity app = null;
 
+   /* private AppActivity() {
+    }*/
+
+    public static AppActivity getInstance() {
+        if (app == null) {
+            app = new AppActivity();
+        }
+        return app;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
+//        setContentView(R.layout.pay_main);
         // Workaround in
         // https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
         if (!isTaskRoot()) {
@@ -72,13 +90,53 @@ public class AppActivity extends Cocos2dxActivity {
         myVibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
     }
 
+    //TS调入
+    public static String TsBridge(String param) throws JSONException {
+        JSONObject obj = new JSONObject(param);
+        int type = obj.getInt("funType");
+//        JSONObject args = obj.getJSONObject("args");
+        switch (type) {
+            case TsConst.LF_PAY:
+                app.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        AlipaySdk.getInstance().pay();
+                    }
+                });
+                break;
+            case TsConst.LF_PRE_PAY:
+                System.out.println("pay_pre" + 88888);
+                break;
+            default:
+        }
+        return "";
+    }
+
+    //java调出
+    public static void JavaBridge(final int type, final String args) {
+        app.runOnGLThread(new Runnable() {
+            @Override
+            public void run() {
+                JSONObject object = new JSONObject();
+                try {
+                    object.put("args", args);
+                    object.put("code", type == TsConst.LF_PAY ? 1 : 0);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                String value = "JavaBridge(" + type + ",'" + object + "')";
+                Cocos2dxJavascriptJavaBridge.evalString(value);
+            }
+        });
+    }
+
     public static void vibrator(String args) {
         try {
             JSONObject jsonObject = new JSONObject(args);
             int time = jsonObject.getInt("time");
             myVibrator.vibrate(time);// ms
 
-            app.JavaBridge();
+//            app.JavaBridge();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -98,53 +156,35 @@ public class AppActivity extends Cocos2dxActivity {
                 builder.setMessage("天冷多加衣！");
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
-                app.JavaBridge();
-            }
-        });
-    }
-
-    private void JavaBridge() {
-        app.runOnGLThread(new Runnable() {
-            @Override
-            public void run() {
-                JSONObject object = new JSONObject();
-                try {
-                    object.put("param", "Bridge---javascript");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                String value = "JavaWWWWWBridge.onJava('" + object + "')";
-                Cocos2dxJavascriptJavaBridge.evalString(value);
             }
         });
     }
 
 
-    public static void copyText(final String text){
+    public static void copyText(final String text) {
         app.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 try {//s
                     JSONObject jsonObject = new JSONObject(text);
                     String str = jsonObject.getString("str");
-                    ClipboardManager c= (ClipboardManager)app.getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipboardManager c = (ClipboardManager) app.getSystemService(Context.CLIPBOARD_SERVICE);
                     c.setPrimaryClip(ClipData.newPlainText("text", str));
-                    System.out.println(str+88888);
-                }catch (JSONException e){
-                    System.out.println("catch"+88888);
+                    System.out.println(str + 88888);
+                } catch (JSONException e) {
+                    System.out.println("catch" + 88888);
                 }
             }
         });
 
     }
 
-    public static String getCopyText(){
-        if (Looper.myLooper() == null){
+    public static String getCopyText() {
+        if (Looper.myLooper() == null) {
             Looper.prepare();
         }
-        ClipboardManager c= (ClipboardManager)app.getSystemService(Context.CLIPBOARD_SERVICE);
-        if(!c.hasPrimaryClip()) {
+        ClipboardManager c = (ClipboardManager) app.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (!c.hasPrimaryClip()) {
             return "";
         }
         ClipData clip = c.getPrimaryClip();
@@ -243,4 +283,6 @@ public class AppActivity extends Cocos2dxActivity {
         SDKWrapper.getInstance().onStart();
         super.onStart();
     }
+
+
 }

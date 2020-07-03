@@ -82,7 +82,6 @@ export default class Main extends MyScene {
                 mgr.initByLoad()
             }
             await CrossMgr.initMgr();
-            window["JavaWWWWWBridge"] = UserMgr;
             FloatMgr.initMgr();
             glb.initMgr();
             SetMgr.initMgr();
@@ -93,13 +92,17 @@ export default class Main extends MyScene {
             let localDeviceVer = glb.ch.channel + "_" + glb.ch.code;
             for (const shVer of cfgJson.shList) {
                 if (shVer == localDeviceVer) {
-                    glb.isShenhe = true;
+                    glb.isShenhe = true; 
                     break;
                 }
             }
             if (!ClientCfg.openVipClub) {
                 ClientCfg.simpleVipClub = true
             }
+            let jsonstr=JSON.stringify({s:"我的个乖乖！！！"})
+            console.log({s:"我的个乖乖！！！"})
+            let test=JSON.parse(jsonstr);
+            console.log("oopopopop"+test.s);
             SoundMgr.initMgr()
             TalkMgr.initMgr();
             let jsonStr = JSON.stringify({ time: 1500 });

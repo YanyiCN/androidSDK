@@ -115,7 +115,8 @@ export const  CrossType = {
     LF_LOGOUT_BY_SDK:25,
     LF_SDK_EXIST:27, // 判读sdk是否存在
     LF_USER_GAME_INFO:28, // 获得用户游戏信息
-    LF_GAME_HIDESHOW:29
+    LF_GAME_HIDESHOW:29,
+    LF_PAY_FAILD:30
 }
 
 export class LoginRes {
