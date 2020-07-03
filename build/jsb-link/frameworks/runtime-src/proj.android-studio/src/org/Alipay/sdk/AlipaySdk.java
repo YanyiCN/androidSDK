@@ -13,6 +13,7 @@ import com.alipay.sdk.app.PayTask;
 
 import org.cocos2dx.javascript.AppActivity;
 import org.cocos2dx.javascript.TsConst;
+import org.test.server.PayResult;
 
 import java.util.Map;
 
@@ -68,13 +69,6 @@ public class AlipaySdk {
             System.out.println("pay_over" + 88888);
             return;
         }
-       /* boolean rsa2 = (data.getRsa2Private().length() > 0);
-        Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(data.getAPPID(), rsa2);
-        String orderParam = OrderInfoUtil2_0.buildOrderParam(params);
-
-        String privateKey = rsa2 ? data.getRsa2Private() : data.getRsaPrivate();
-        String sign = OrderInfoUtil2_0.getSign(params, privateKey, rsa2);
-        final String orderInfo = orderParam + "&" + sign;*/
 
         final String orderInfo = data.getOrderInfo();
         final Runnable payRunnable = new Runnable() {

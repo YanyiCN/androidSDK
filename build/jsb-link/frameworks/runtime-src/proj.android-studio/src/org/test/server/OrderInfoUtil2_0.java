@@ -1,4 +1,4 @@
-package org.Alipay.sdk;
+package org.test.server;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
-
-import org.Alipay.sdk.SignUtils;
 
 /**
  * 2.0 订单串本地签名逻辑
