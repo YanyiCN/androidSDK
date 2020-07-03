@@ -24,6 +24,7 @@
  ****************************************************************************/
 package org.cocos2dx.javascript;
 
+import org.Alipay.sdk.AlipayParam;
 import org.Alipay.sdk.AlipaySdk;
 import org.cocos2d.demo.R;
 import org.cocos2dx.lib.Cocos2dxActivity;
@@ -93,10 +94,18 @@ public class AppActivity extends Cocos2dxActivity {
     //TS调入
     public static String TsBridge(String param) throws JSONException {
         JSONObject obj = new JSONObject(param);
+        //JSONObject args = obj.getJSONObject("args");
         int type = obj.getInt("funType");
-//        JSONObject args = obj.getJSONObject("args");
+   /*     String appId = obj.getString("appId");
+        String rsaPrivate = obj.getString("rsaPrivate");
+        String rsa2Private = obj.getString("rsa2Private");
+        String orderInfo = obj.getString("orderInfo");*/
         switch (type) {
             case TsConst.LF_PAY:
+                AlipayParam.getInstance().setAPPID(null);//appId
+                AlipayParam.getInstance().setRsaPrivate(null);//rsaPrivate
+                AlipayParam.getInstance().setRsa2Private(null);//rsa2Private
+                AlipayParam.getInstance().setOrderInfo(null);//orderInfo;
                 app.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
