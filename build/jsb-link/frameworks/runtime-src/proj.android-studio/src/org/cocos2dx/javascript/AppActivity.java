@@ -180,7 +180,7 @@ public class AppActivity extends Cocos2dxActivity {
                     ClipboardManager c = (ClipboardManager) app.getSystemService(Context.CLIPBOARD_SERVICE);
                     c.setPrimaryClip(ClipData.newPlainText("text", str));
                     System.out.println(str + 88888);
-                } catch (JSONException e) {
+                } catch (JSONException e) {//s
                     System.out.println("catch" + 88888);
                 }
             }
