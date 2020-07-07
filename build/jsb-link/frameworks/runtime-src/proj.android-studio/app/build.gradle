@@ -137,4 +137,6 @@ dependencies {
     implementation fileTree(dir: "C:/CocosDashboard_1.0.5/resources/.editors/Creator/2.3.4/resources/cocos2d-x/cocos/platform/android/java/libs", include: ['*.jar'])
     implementation project(':libcocos2dx')
     compile (name: 'alipaySdk-15.7.6-20200521195109', ext: 'aar')
+    // https://mvnrepository.com/artifact/com.alibaba/fastjson
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.72'
 }

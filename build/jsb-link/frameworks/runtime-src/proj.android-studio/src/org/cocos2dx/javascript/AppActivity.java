@@ -52,6 +52,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.alipay.sdk.app.EnvUtils;
 
 import java.lang.reflect.Field;
@@ -171,6 +172,7 @@ public class AppActivity extends Cocos2dxActivity {
 
 
     public static void copyText(final String text) {
+        JSON s=null;
         app.runOnUiThread(new Runnable() {
             @Override
             public void run() {
