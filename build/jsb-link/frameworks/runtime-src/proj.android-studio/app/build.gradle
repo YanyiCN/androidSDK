@@ -37,12 +37,12 @@ android {
         }
     }
 
-    sourceSets.main {
-        java.srcDirs "../src", "src"
-        res.srcDirs "../res", 'res'
-        jniLibs.srcDirs "../libs", 'libs'
-        manifest.srcFile "AndroidManifest.xml"
-    }
+//    sourceSets.main {
+//        java.srcDirs "../src", "src"
+//        res.srcDirs "../res", 'res'
+//        jniLibs.srcDirs "../libs", 'libs'
+//        manifest.srcFile "AndroidManifest.xml"
+//    }
 
     externalNativeBuild {
         ndkBuild {
@@ -95,9 +95,92 @@ android {
             }
         }
     }
+    def gameClientVersion = '1.0.111'
+    def YYB_CODE = "200106"
+    def YYB_versionCode = 18
+    def YYB_versionName = "1.8"
+
+
+    def ALIGAME_CODE = "200106"
+    def ALIGAME_versionCode = 3
+    def ALIGAME_versionName = "1.3"
+    flavorDimensions "channel"
+
+    productFlavors {
+        ch_aligame {
+            dimension "channel"
+            minSdkVersion PROP_MIN_SDK_VERSION
+            targetSdkVersion 26
+            manifestPlaceholders = [
+                    jy_plfm        : "aligame",
+                    jy_channel     : "aligame",
+                    jy_code        : ALIGAME_CODE,
+                    jy_baidu_apikey: "IMBdeNme25iWMVMGlInsdv2YEQcAHGfM",
+
+                    aligame_gameId : "1150576"
+            ]
+            dependencies {
+//                ch_aligameApi project(':sdk_weixin_nopay')
+                ch_aligameApi project(':sdk_aligame')
+            }
+            repositories {
+                flatDir {
+                    dirs 'libs', '../../proj.as_subs/sdk_aligame/src/main/libs'
+                }
+            }
+            applicationId 'com.jy.mj.hzmj.aligames'
+            resValue "string", "app_name", "来打红中麻将"
+            versionCode ALIGAME_versionCode
+            versionName ALIGAME_versionName
+        }
+
+        ch_yyb {
+            dimension "channel"
+            manifestPlaceholders = [
+                    jy_plfm        : "yyb",
+                    jy_channel     : "yyb",
+                    jy_code        : YYB_CODE,
+                    jy_baidu_apikey: "phL2RVIV9scZrApnYUhTIi11bGMdGW1g",
+
+                    yyb_qq_appid: "1106579343",
+                    yyb_wx_appid: "wx5a4ea6bb3b4b89d9",
+                    yyb_mds_appid: "100703379",
+                    yyb_XG_V2_ACCESS_ID: "2100290742",
+                    yyb_XG_V2_ACCESS_KEY: "A9VF87VN51NL",
+                    yyb_XG_V4_CHANNEL_ID: "1234567",
+            ]
+            dependencies {
+                ch_yybApi project(':sdk_yyb')
+            }
+            repositories {
+                flatDir {
+                    dirs 'libs', '../../proj.as_subs/sdk_yyb/src/main/libs'
+                }
+            }
+
+            applicationId 'com.jy.mj.hzmj'
+            resValue "string", "app_name", "来打红中麻将"
+            versionCode YYB_versionCode
+            versionName YYB_versionName
+        }
+    }
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                def jyChName = variant.productFlavors[0].manifestPlaceholders.get("jy_channel")
+                def jyChCode = variant.productFlavors[0].manifestPlaceholders.get("jy_code")
+                def jyChNameEXT = variant.productFlavors[0].manifestPlaceholders.get("jy_channel_ext")
+                if (jyChNameEXT==null){
+                    jyChNameEXT = ""
+                }
+                def name = "${jyChName}_${jyChCode}_${gameClientVersion}${jyChNameEXT}.apk"
+
+                outputFileName = name
+            }
+    }
 }
 
-android.applicationVariants.all { variant ->
+/*android.applicationVariants.all { variant ->
     // delete previous files first
     delete "${buildDir}/intermediates/merged_assets/${variant.dirName}"
 
@@ -130,12 +213,16 @@ android.applicationVariants.all { variant ->
             into outputDir
         }
     }
-}
+}*/
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
     implementation fileTree(dir: "C:/CocosDashboard_1.0.5/resources/.editors/Creator/2.3.4/resources/cocos2d-x/cocos/platform/android/java/libs", include: ['*.jar'])
     implementation project(':libcocos2dx')
+    api project(':slotcore')
+//    api project(':sdk_vivo')
     compile (name: 'alipaySdk-15.7.6-20200521195109', ext: 'aar')
     // https://mvnrepository.com/artifact/com.alibaba/fastjson
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.72'

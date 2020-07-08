@@ -1,0 +1,74 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.jy.sdks.aligame" xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <!-- 阿里游戏开始 -->
+        <!-- 支付sdk相关 -->
+        <activity
+            android:name="cn.uc.paysdk.SDKActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden|adjustResize" >
+        </activity>
+        <service android:name="cn.uc.paysdk.service.SDKService" >
+        </service>
+
+        <!-- From SDK 1.4.0 for crash log-->
+        <service android:name="com.uc.crashsdk.CrashLogFilesUploader"
+            android:process=":TProcess">
+        </service>
+        <!-- From SDK 1.4.0 for crash log-->
+
+        <!-- 支付宝sdk相关 -->
+
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+
+        <!-- now 微信SDK支付2.x相关添加开始 -->
+        <activity
+            android:name="com.ipaynow.wechatpay.plugin.inner_plugin.wechat_plugin.activity.WeChatNotifyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <!-- now 微信SDK支付2.x相关添加结束 -->
+        <!-- 以上声明是SDK内部声明，最好不要更改，直接拷贝过去 -->
+
+        <activity
+            android:name="cn.gundam.sdk.shell.activity.ProxyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="cn.uc.gamesdk.sdkweb" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            tools:node="replace"
+            android:name="cn.uc.gamesdk.activity.PullupActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:label="PullupActivity"
+            android:launchMode="singleTop"
+            android:taskAffinity="${applicationId}.diff"
+            android:theme="@android:style/Theme.Translucent" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="ng${aligame_gameId}" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
+
+</manifest>

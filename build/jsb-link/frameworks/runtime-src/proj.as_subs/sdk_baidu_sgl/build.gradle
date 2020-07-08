@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion PROP_COMPILE_SDK_VERSION.toInteger()
+    buildToolsVersion PROP_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion PROP_MIN_SDK_VERSION
+        targetSdkVersion PROP_TARGET_SDK_VERSION
+
+        manifestPlaceholders = [
+                baidu_sgl_dksdk_appid: "\${baidu_sgl_dksdk_appid}",
+                baidu_sgl_dksdk_appkey: "\${baidu_sgl_dksdk_appkey}",
+                baisu_sgl_dksdk_channel: "\${baisu_sgl_dksdk_channel}"
+        ]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'src/main/libs')
+    implementation project(':slotcore')
+}

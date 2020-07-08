@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slot_loading_linear"   
+    android:orientation="vertical"  
+    android:layout_width="fill_parent"   
+    android:layout_height="fill_parent"  
+    android:minHeight="100dp"  
+    android:minWidth="180dp"  
+    android:gravity="center"  
+    android:padding="10dp"  
+    android:background="@drawable/slot_loading_bg">
+    <FrameLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+       <ImageView 
+        android:id="@+id/slot_bar_bg"  
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"   
+        android:src="@drawable/slot_bar_bg"
+        android:contentDescription=""
+        />
+    
+    <ImageView 
+        android:id="@+id/slot_bar"  
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"   
+        android:src="@drawable/slot_bar"
+        android:contentDescription=""
+        />
+    </FrameLayout>
+
+    <TextView   
+        android:id="@+id/slot_txt"  
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"  
+        />  
+</LinearLayout>
