@@ -37,12 +37,12 @@ android {
         }
     }
 
-//    sourceSets.main {
-//        java.srcDirs "../src", "src"
-//        res.srcDirs "../res", 'res'
-//        jniLibs.srcDirs "../libs", 'libs'
-//        manifest.srcFile "AndroidManifest.xml"
-//    }
+/*    sourceSets.main {
+        java.srcDirs "../src", "src"
+        res.srcDirs "../res", 'res'
+        jniLibs.srcDirs "../libs", 'libs'
+        manifest.srcFile "AndroidManifest.xml"
+    }*/
 
     externalNativeBuild {
         ndkBuild {

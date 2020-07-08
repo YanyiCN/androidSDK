@@ -6,3 +6,4 @@ include ':sdk_yyb'
 project(':sdk_yyb').projectDir = new File(settingsDir, '../proj.as_subs/sdk_yyb')
 include ':sdk_vivo'
 project(':sdk_vivo').projectDir = new File(settingsDir, '../proj.as_subs/sdk_vivo')
+include ':alipay'
